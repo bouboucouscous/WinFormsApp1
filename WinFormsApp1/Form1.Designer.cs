@@ -34,13 +34,25 @@
             applicationToolStripMenuItem = new ToolStripMenuItem();
             quitterToolStripMenuItem = new ToolStripMenuItem();
             treeView1 = new TreeView();
+            coller = new ContextMenuStrip(components);
+            collerToolStripMenuItem = new ToolStripMenuItem();
             imageList1 = new ImageList(components);
             listView1 = new ListView();
+            copier = new ContextMenuStrip(components);
+            copiezToolStripMenuItem = new ToolStripMenuItem();
+            suppriemrToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            textBox6 = new TextBox();
             menuStrip1.SuspendLayout();
+            coller.SuspendLayout();
+            copier.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -48,7 +60,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { applicationToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(1124, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -68,6 +80,7 @@
             // 
             // treeView1
             // 
+            treeView1.ContextMenuStrip = coller;
             treeView1.ImageIndex = 0;
             treeView1.ImageList = imageList1;
             treeView1.Location = new Point(40, 53);
@@ -77,6 +90,19 @@
             treeView1.TabIndex = 0;
             treeView1.AfterExpand += treeView1_AfterExpand;
             treeView1.AfterSelect += treeView1_AfterSelect;
+            // 
+            // coller
+            // 
+            coller.Items.AddRange(new ToolStripItem[] { collerToolStripMenuItem });
+            coller.Name = "coller";
+            coller.Size = new Size(104, 26);
+            // 
+            // collerToolStripMenuItem
+            // 
+            collerToolStripMenuItem.Name = "collerToolStripMenuItem";
+            collerToolStripMenuItem.Size = new Size(103, 22);
+            collerToolStripMenuItem.Text = "coller";
+            collerToolStripMenuItem.Click += collerToolStripMenuItem_Click;
             // 
             // imageList1
             // 
@@ -208,6 +234,7 @@
             // 
             // listView1
             // 
+            listView1.ContextMenuStrip = copier;
             listView1.GroupImageList = imageList1;
             listView1.LargeImageList = imageList1;
             listView1.Location = new Point(347, 53);
@@ -218,6 +245,28 @@
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.ItemActivate += listView1_ItemActivate;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            listView1.MouseUp += ListView_MouseUp;
+            // 
+            // copier
+            // 
+            copier.Items.AddRange(new ToolStripItem[] { copiezToolStripMenuItem, suppriemrToolStripMenuItem });
+            copier.Name = "Fichier";
+            copier.Size = new Size(181, 70);
+            // 
+            // copiezToolStripMenuItem
+            // 
+            copiezToolStripMenuItem.Name = "copiezToolStripMenuItem";
+            copiezToolStripMenuItem.Size = new Size(129, 22);
+            copiezToolStripMenuItem.Text = "Copiez";
+            copiezToolStripMenuItem.Click += copiezToolStripMenuItem_Click;
+            // 
+            // suppriemrToolStripMenuItem
+            // 
+            suppriemrToolStripMenuItem.Name = "suppriemrToolStripMenuItem";
+            suppriemrToolStripMenuItem.Size = new Size(180, 22);
+            suppriemrToolStripMenuItem.Text = "Suppriemr";
+            suppriemrToolStripMenuItem.Click += suppriemrToolStripMenuItem_Click;
             // 
             // button1
             // 
@@ -251,16 +300,68 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(617, 64);
+            textBox1.AccessibleRole = AccessibleRole.SplitButton;
+            textBox1.BackColor = SystemColors.Control;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Enabled = false;
+            textBox1.Location = new Point(610, 76);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(141, 23);
+            textBox1.Size = new Size(141, 16);
             textBox1.TabIndex = 5;
+            textBox1.Text = "Emplacement :";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(701, 73);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(398, 23);
+            textBox2.TabIndex = 6;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(787, 129);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(134, 23);
+            textBox3.TabIndex = 8;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Control;
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Enabled = false;
+            textBox4.Location = new Point(610, 136);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(171, 16);
+            textBox4.TabIndex = 7;
+            textBox4.Text = "Derniere date de modification :";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(659, 194);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(122, 23);
+            textBox5.TabIndex = 10;
+            // 
+            // textBox6
+            // 
+            textBox6.BackColor = SystemColors.Control;
+            textBox6.BorderStyle = BorderStyle.None;
+            textBox6.Enabled = false;
+            textBox6.Location = new Point(610, 197);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(141, 16);
+            textBox6.TabIndex = 9;
+            textBox6.Text = "Taille :";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(1124, 484);
+            Controls.Add(textBox5);
+            Controls.Add(textBox6);
+            Controls.Add(textBox3);
+            Controls.Add(textBox4);
+            Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -273,6 +374,8 @@
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            coller.ResumeLayout(false);
+            copier.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -289,5 +392,15 @@
         private Button button2;
         private Button button3;
         private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private TextBox textBox6;
+        private ContextMenuStrip copier;
+        private ToolStripMenuItem copiezToolStripMenuItem;
+        private ToolStripMenuItem suppriemrToolStripMenuItem;
+        private ContextMenuStrip coller;
+        private ToolStripMenuItem collerToolStripMenuItem;
     }
 }
