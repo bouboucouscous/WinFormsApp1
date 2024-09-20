@@ -5,7 +5,8 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
 
-        string pathFichieACopier, nameFicheierAColler;
+        string 
+            pathFichieACopier, nameFicheierAColler;
 
 
         public Form1()
